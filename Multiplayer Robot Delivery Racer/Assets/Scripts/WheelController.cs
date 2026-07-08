@@ -38,7 +38,6 @@ public class WheelController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        Debug.Log(moveInput);
     }
     public void OnBrake(InputAction.CallbackContext context)
     {
@@ -52,19 +51,14 @@ public class WheelController : MonoBehaviour
     {
         // How fast (and which way) the car is currently moving along its own forward axis
         float forwardSpeed = Vector3.Dot(rb.linearVelocity, transform.forward);
-
         //Steering 
-        currentTurnAngle = -maxTurnAngle * moveInput.y;
+        currentTurnAngle = maxTurnAngle * moveInput.y;
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
-
-        Debug.Log(moveInput.y);
-
         // Is the player pressing the opposite direction to current motion?
         bool isReversingDirection = moveInput.x != 0f
             && Mathf.Sign(moveInput.x) != Mathf.Sign(forwardSpeed)
             && Mathf.Abs(forwardSpeed) > 0.5f; // small deadzone so it doesn't trigger near-zero speed
-
         if (isReversingDirection)
         {
             // Kill momentum hard before allowing the new direction to take over
@@ -86,17 +80,17 @@ public class WheelController : MonoBehaviour
             currentAcceleration = acceleration * moveInput.x;
             currentBreakForce = 0f;
         }
-
+        
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
         backRight.motorTorque = currentAcceleration;
         backLeft.motorTorque = currentAcceleration;
-
+        
         frontRight.brakeTorque = currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
-
+        
         // Update Wheel Meshes
         UpdateWheel(frontLeft, frontLeftWheelTransform);
         UpdateWheel(frontRight, frontRightWheelTransform);
