@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
-public class WheelController : MonoBehaviour
+public class WheelController : NetworkBehaviour 
 {
     [Header("Wheel Collider References")]
     [SerializeField] WheelCollider frontRight;
@@ -49,6 +50,8 @@ public class WheelController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!IsOwner) return;
+        
         // How fast (and which way) the car is currently moving along its own forward axis
         float forwardSpeed = Vector3.Dot(rb.linearVelocity, transform.forward);
         //Steering 

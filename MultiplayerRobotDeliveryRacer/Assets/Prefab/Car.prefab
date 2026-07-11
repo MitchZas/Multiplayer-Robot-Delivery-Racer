@@ -818,8 +818,10 @@ GameObject:
   - component: {fileID: 1921904893209072642}
   - component: {fileID: 8570393118844461671}
   - component: {fileID: 9192178899806820917}
-  - component: {fileID: 2696950818443120298}
   - component: {fileID: 42669081922090840}
+  - component: {fileID: 2696950818443120298}
+  - component: {fileID: 7940697349480707547}
+  - component: {fileID: 2493493732197139949}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -956,30 +958,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &2696950818443120298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4852400383268036758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf3cfeff8236c68438b802cedabbc590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WheelController
-  frontRight: {fileID: 6469173479962083833}
-  frontLeft: {fileID: 2971139906958272069}
-  backRight: {fileID: 4095200103329128962}
-  backLeft: {fileID: 1322870451008909402}
-  frontRightWheelTransform: {fileID: 4236379948322545911}
-  frontLeftWheelTransform: {fileID: 3405083816254135315}
-  backRightWheelTransform: {fileID: 7062132837141102934}
-  backLeftWheelTransform: {fileID: 583303826619503364}
-  acceleration: 175
-  breakingForce: 500
-  breakingForceMultiplier: 0.3
-  maxTurnAngle: 50
 --- !u!114 &42669081922090840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 287020008
+  GlobalObjectIdHash: 1740993955
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1006,6 +984,94 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2696950818443120298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852400383268036758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3cfeff8236c68438b802cedabbc590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelController
+  ShowTopMostFoldoutHeaderGroup: 1
+  frontRight: {fileID: 6469173479962083833}
+  frontLeft: {fileID: 2971139906958272069}
+  backRight: {fileID: 4095200103329128962}
+  backLeft: {fileID: 1322870451008909402}
+  frontRightWheelTransform: {fileID: 4236379948322545911}
+  frontLeftWheelTransform: {fileID: 3405083816254135315}
+  backRightWheelTransform: {fileID: 7062132837141102934}
+  backLeftWheelTransform: {fileID: 583303826619503364}
+  acceleration: 175
+  breakingForce: 500
+  breakingForceMultiplier: 0.3
+  maxTurnAngle: 50
+--- !u!114 &7940697349480707547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852400383268036758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 1
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &2493493732197139949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852400383268036758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 1
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1 &5742916764668438038
 GameObject:
   m_ObjectHideFlags: 0
