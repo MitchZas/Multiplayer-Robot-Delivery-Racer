@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 39299122356483570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 3859095557847041268}
   - component: {fileID: 4899336982868688173}
   - component: {fileID: 8434134291559522114}
-  - component: {fileID: 7530364956564985903}
   m_Layer: 0
   m_Name: Outer Left Eye
   m_TagString: Untagged
@@ -216,29 +215,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7530364956564985903
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525921636517061263}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &771472195969002429
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +798,7 @@ GameObject:
   - component: {fileID: 2696950818443120298}
   - component: {fileID: 7940697349480707547}
   - component: {fileID: 2493493732197139949}
+  - component: {fileID: 5721140925769991184}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -894,8 +871,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.6925479, z: 1}
-  m_Center: {x: 0, y: -0.081303656, z: 0}
+  m_Size: {x: 1.0993459, y: 0.6925479, z: 1.0789089}
+  m_Center: {x: -0.04967296, y: -0.081303656, z: 0.03945446}
 --- !u!114 &9192178899806820917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,6 +1049,21 @@ MonoBehaviour:
   UseRigidBodyForMotion: 1
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &5721140925769991184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4852400383268036758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6411429d57ac7d48a64d20d4b7021e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 3399488874124367305, guid: 79a38f431c2372f47be8ce99c66db8f1, type: 3}
 --- !u!1 &5742916764668438038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1197,6 @@ GameObject:
   - component: {fileID: 1443816305684068083}
   - component: {fileID: 7184631646497299953}
   - component: {fileID: 8425307503542178889}
-  - component: {fileID: 5504245926503756073}
   m_Layer: 0
   m_Name: Outer Right Eye
   m_TagString: Untagged
@@ -1285,29 +1276,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5504245926503756073
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6665146325007715616}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6665616585105027242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1287,6 @@ GameObject:
   - component: {fileID: 4403237488786726086}
   - component: {fileID: 8697226129528916169}
   - component: {fileID: 6567845267032862006}
-  - component: {fileID: 2264642578367345673}
   m_Layer: 0
   m_Name: Inner Left Eye
   m_TagString: Untagged
@@ -1336,7 +1303,7 @@ Transform:
   m_GameObject: {fileID: 6665616585105027242}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.268, y: -0.029, z: 0.592}
+  m_LocalPosition: {x: 0.268, y: -0.029, z: 0.576}
   m_LocalScale: {x: 0.16148199, y: 0.012918558, z: 0.16148199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1399,29 +1366,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2264642578367345673
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6665616585105027242}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7562776100727042160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1633,6 @@ GameObject:
   - component: {fileID: 3233896183399566141}
   - component: {fileID: 8080228543306684307}
   - component: {fileID: 4601250594190820844}
-  - component: {fileID: 1180959687468792260}
   m_Layer: 0
   m_Name: Inner Right Eye
   m_TagString: Untagged
@@ -1706,7 +1649,7 @@ Transform:
   m_GameObject: {fileID: 8429641088779839970}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.20799983, y: -0.029, z: 0.592}
+  m_LocalPosition: {x: -0.20799983, y: -0.029, z: 0.578}
   m_LocalScale: {x: 0.16148199, y: 0.012918558, z: 0.16148199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1769,26 +1712,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1180959687468792260
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8429641088779839970}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
