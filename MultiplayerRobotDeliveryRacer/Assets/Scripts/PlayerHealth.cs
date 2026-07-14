@@ -22,11 +22,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Cube"))
-        {
-            Debug.Log("Collided)");
-            TakeDamage(10);
-        }
+        if (other.gameObject.CompareTag("Cube")) TakeDamage(10); 
+
+        if (other.gameObject.CompareTag("NPC")) TakeDamage(20);
+
+        if (other.gameObject.CompareTag("Building")) TakeDamage(30);
+        
     }
 
     void TakeDamage(int damage)
