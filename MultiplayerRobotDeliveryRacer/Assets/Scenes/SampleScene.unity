@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2862fceae210b24e95489a1bae856c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryGoal
+  playerHealth: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

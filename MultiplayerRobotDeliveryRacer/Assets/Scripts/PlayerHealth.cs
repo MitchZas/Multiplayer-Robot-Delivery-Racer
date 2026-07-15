@@ -33,5 +33,6 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+        Debug.Log(currentHealth);
     }
 }
