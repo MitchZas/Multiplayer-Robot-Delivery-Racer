@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
         {
             healthBar = FindFirstObjectByType<HealthBar>();
         }
-        Debug.Log("healthBar is null: " + (healthBar == null));
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -27,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("NPC")) TakeDamage(20);
 
         if (other.gameObject.CompareTag("Building")) TakeDamage(30);
-        
     }
 
     void TakeDamage(int damage)
@@ -35,7 +33,5 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
-
-        Debug.Log(currentHealth);
     }
 }
