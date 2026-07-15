@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Netcode;
+using Unity.Cinemachine;
 
 public class WheelController : NetworkBehaviour 
 {
@@ -110,5 +111,16 @@ public class WheelController : NetworkBehaviour
         // Set wheel transtorm state
         transform.position = position;
         transform.rotation = rotation;
+    }
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwner)
+        {
+            CinemachineCamera cam = FindFirstObjectByType<CinemachineCamera>();
+            if (cam != null)
+            {
+                cam.Target.TrackingTarget = transform;
+            }
+        }
     }
 }
