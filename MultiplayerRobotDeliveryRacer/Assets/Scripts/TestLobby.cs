@@ -1,8 +1,10 @@
-using UnityEngine;
-using Unity.Services.Core;
+using System.Threading.Tasks;
 using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TestLobby : MonoBehaviour
 {
@@ -16,11 +18,27 @@ public class TestLobby : MonoBehaviour
         };
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-        CreateLobby();
     }
 
-    private async void CreateLobby()
+    private void Update()
+    {
+        if (Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            CreateLobby();
+        }
+
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            ListLobby();
+        }
+    }
+
+    private async void CreateLobby() // async void is fine here since it's the entry point, same as a button click
+    {
+        await CreateLobbyTask();
+    }
+
+    private async Task CreateLobbyTask()
     {
         try
         {
@@ -30,7 +48,30 @@ public class TestLobby : MonoBehaviour
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
 
             Debug.Log("Created Lobby! " + lobby.Name + " " + maxPlayers);
-        } catch (LobbyServiceException e)
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    private async void ListLobby() // async void is fine here since it's the entry point, same as a button click
+    {
+        await ListLobbiesTask();
+    }
+    private async Task ListLobbiesTask()
+    {
+        try
+        {
+            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
+
+        Debug.Log("Lobbies found : " + queryResponse.Results.Count);
+        foreach (Lobby lobby in queryResponse.Results)
+        {
+            Debug.Log(lobby.Name + " " + lobby.MaxPlayers);
+        }
+        }
+        catch (LobbyServiceException e)
         {
             Debug.Log(e);
         }
