@@ -111,4 +111,18 @@ public class TestLobby : MonoBehaviour
             Debug.Log(e);
         }
     }
+
+    private async void JoinLobby()
+        {
+        try
+        {
+            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
+
+            await LobbyService.Instance.JoinLobbyByIdAsync(queryResponse.Results[0].Id);
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.Log(e);
+        }
+    }
 }
