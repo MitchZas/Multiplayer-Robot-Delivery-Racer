@@ -116,13 +116,14 @@ public class TestLobby : MonoBehaviour
         }
     }
 
-    private async void JoinLobby()
+    private async void JoinLobbyByCode(string lobbyCode)
         {
         try
         {
-            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync();
 
-            await LobbyService.Instance.JoinLobbyByIdAsync(queryResponse.Results[0].Id);
+            await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode);
+
+            Debug.Log("Joined Lobby with code " +  lobbyCode);
         }
         catch (LobbyServiceException e)
         {
