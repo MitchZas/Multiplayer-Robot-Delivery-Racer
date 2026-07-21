@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 
 public class TestLobby : MonoBehaviour
 {
+    private Lobby hostLobby;
+    private float heartBeatTimer;
+    
     private async void Start()
     {
         await UnityServices.InitializeAsync();
@@ -22,6 +25,8 @@ public class TestLobby : MonoBehaviour
 
     private void Update()
     {
+        HandleLobbyHeartbeat();
+        
         if (Keyboard.current.lKey.wasPressedThisFrame)
         {
             CreateLobby();
@@ -33,6 +38,22 @@ public class TestLobby : MonoBehaviour
         }
     }
 
+    private async void HandleLobbyHeartbeat()
+    {
+        if (hostLobby != null)
+        {
+            heartBeatTimer -= Time.deltaTime;
+
+            if (heartBeatTimer < 0)
+            {
+                float heartbeatTimerMax = 15f;
+                heartBeatTimer = heartbeatTimerMax;
+
+                await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+            }
+        }
+    }
+    
     private async void CreateLobby() // async void is fine here since it's the entry point, same as a button click
     {
         await CreateLobbyTask();
@@ -47,6 +68,8 @@ public class TestLobby : MonoBehaviour
 
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
 
+            hostLobby = lobby;
+            
             Debug.Log("Created Lobby! " + lobby.Name + " " + maxPlayers);
         }
         catch (LobbyServiceException e)
