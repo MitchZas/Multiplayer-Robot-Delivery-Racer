@@ -66,12 +66,16 @@ public class TestLobby : MonoBehaviour
         {
             string lobbyName = "My Lobby";
             int maxPlayers = 4;
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                IsPrivate = true,
+            };
 
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers,createLobbyOptions);
 
             hostLobby = lobby;
             
-            Debug.Log("Created Lobby! " + lobby.Name + " " + maxPlayers);
+            Debug.Log("Created Lobby! " + lobby.Name + " " + maxPlayers + " " + lobby.Id + lobby.LobbyCode);
         }
         catch (LobbyServiceException e)
         {
