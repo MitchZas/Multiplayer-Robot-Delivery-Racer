@@ -10,8 +10,10 @@ using UnityEngine.InputSystem;
 public class TestLobby : MonoBehaviour
 {
     private Lobby hostLobby;
+    private Lobby joinedLobby;
     private float heartBeatTimer;
     private string playerName;
+    private float lobbyUpdateTimer;
     
     private async void Start()
     {
@@ -31,7 +33,8 @@ public class TestLobby : MonoBehaviour
     private void Update()
     {
         HandleLobbyHeartbeat();
-        
+        HandleLobbyPollForUpdates();
+
         if (Keyboard.current.lKey.wasPressedThisFrame)
         {
             CreateLobby();
@@ -55,6 +58,23 @@ public class TestLobby : MonoBehaviour
                 heartBeatTimer = heartbeatTimerMax;
 
                 await LobbyService.Instance.SendHeartbeatPingAsync(hostLobby.Id);
+            }
+        }
+    }
+
+    private async void HandleLobbyPollForUpdates()
+    {
+        if (joinedLobby != null)
+        {
+            lobbyUpdateTimer -= Time.deltaTime;
+
+            if (lobbyUpdateTimer < 0)
+            {
+                float lobbyUpdateTimerMax = 1.1f;
+                lobbyUpdateTimer = lobbyUpdateTimerMax;
+
+                Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                joinedLobby = lobby;
             }
         }
     }
@@ -132,6 +152,7 @@ public class TestLobby : MonoBehaviour
             {
                 Player = GetPlayer()
             };
+            
             Lobby joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode, joinLobbyByCodeOptions);
 
             Debug.Log("Joined Lobby with code " +  lobbyCode);
